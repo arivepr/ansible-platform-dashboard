@@ -12,11 +12,9 @@ import {
   Flex,
   FlexItem,
   Label,
-  Spinner,
   Text,
   Title, Button
 } from '@patternfly/react-core';
-import { Section } from '@redhat-cloud-services/frontend-components/Section';
 import { useIntl } from 'react-intl';
 import messages from '../../messages/messages';
 import { fetchClusters, fetchErrorNotifications, fetchWarningNotifications, fetchJobsData } from '../../redux/actions/analytics-actions';
@@ -26,6 +24,7 @@ import JobsChart from './jobs-chart';
 import { release } from '../../utilities/app-history';
 import ConfigureAnalyticsCard from './configure-analytics-card';
 import ErrorCard from '../shared/error-card';
+import { AnalyticsCardPlaceholder } from '../shared/loader-placeholders';
 
 const initialState = {
   isFetching: true
@@ -173,13 +172,7 @@ const AnalyticsCard = () => {
       return <ErrorCard/>;
     }
     else if (isFetching) {
-      return (
-        <Section style={ { backgroundColor: 'white', minHeight: '100%' } }>
-          <Bullseye>
-            <Spinner isSVG />
-          </Bullseye>
-        </Section>
-      );
+      return (<AnalyticsCardPlaceholder/>);
     }
     else {
       return (

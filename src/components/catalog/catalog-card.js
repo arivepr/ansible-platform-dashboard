@@ -10,11 +10,9 @@ import {
   Flex,
   FlexItem,
   Label,
-  Spinner,
   Text, TextContent, TextVariants,
   Title
 } from '@patternfly/react-core';
-import { Section } from '@redhat-cloud-services/frontend-components/Section';
 import { useIntl } from 'react-intl';
 import messages from '../../messages/messages';
 import {
@@ -30,6 +28,7 @@ import orderStatusMapper from '../shared/order-status-mapper';
 import { TimeAgo } from '../../helpers/shared/helpers';
 import ErrorCard from '../shared/error-card';
 import ConfigureCatalogCard from './configure-catalog_card';
+import { AppCardPlaceholder } from '../shared/loader-placeholders';
 
 const initialState = {
   isFetching: true
@@ -280,11 +279,7 @@ const CatalogCard = () => {
     }
     else if (isFetching) {
       return (
-        <Section style={ { backgroundColor: 'white', minHeight: '100%' } }>
-          <Bullseye>
-            <Spinner isSVG />
-          </Bullseye>
-        </Section>
+        <AppCardPlaceholder/>
       );
     }
     else {

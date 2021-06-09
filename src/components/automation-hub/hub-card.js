@@ -10,13 +10,11 @@ import {
   FlexItem,
   Grid,
   GridItem, Label, Level, LevelItem,
-  Spinner,
   Stack,
   StackItem,
   Text, TextContent, TextVariants,
   Title, Popover
 } from '@patternfly/react-core';
-import { Section } from '@redhat-cloud-services/frontend-components/Section';
 import { useIntl } from 'react-intl';
 import messages from '../../messages/messages';
 import { fetchCollection, fetchCollections, fetchPartners, fetchSyncCollections } from '../../redux/actions/hub-actions';
@@ -27,6 +25,7 @@ import { Logo } from './logo';
 import { release } from '../../utilities/app-history';
 import ErrorCard from '../shared/error-card';
 import OutlinedQuestionCircleIcon from '@patternfly/react-icons/dist/js/icons/outlined-question-circle-icon';
+import { AppCardPlaceholder } from '../shared/loader-placeholders';
 
 const initialState = {
   isFetching: true
@@ -280,11 +279,7 @@ const HubCard = () => {
 
     if (isFetching) {
       return (
-        <Section style={ { backgroundColor: 'white', minHeight: '100%' } }>
-          <Bullseye>
-            <Spinner isSVG />
-          </Bullseye>
-        </Section>
+        <AppCardPlaceholder/>
       );
     }
     else {
