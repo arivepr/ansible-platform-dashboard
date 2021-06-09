@@ -27,6 +27,7 @@ const App = () => {
       .then((data) => setUserPermissions(data));
     }).then(() => setAuth(true));
     insights.chrome.identifyApp('ansible-dashboard');
+    insights.chrome.appNavClick({ id: 'ansible-dashboard' });
   }, []);
 
   if (!auth) {
