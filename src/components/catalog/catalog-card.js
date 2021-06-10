@@ -234,40 +234,51 @@ const CatalogCard = () => {
     </FlexItem>
   </Flex>);
 
-  const renderCatalogOther = () => {
-    const isEmptyList = !(orders?.meta?.count > 0);
-    return (
-      <Flex direction={ { default: 'column' } }
-        justifyContent={ { default: 'justifyContentSpaceBetween' } }
-        alignSelf={ { default: 'alignSelfStretch' } }>
-        <FlexItem>
-          <Flex>
-            <FlexItem>
-              <Title headingLevel="h4">
-                { intl.formatMessage(messages.catalogCardLatestOrdersTitle) }
-              </Title>
-            </FlexItem>
-            { !isEmptyList && <FlexItem>
-              <Badge isRead>{ orders?.meta?.count }</Badge>
-            </FlexItem> }
-          </Flex>
-        </FlexItem>
-        { isEmptyList ? emptyOrdersList() : orders?.data?.map((order) => (
-          orderRow(order)
-        )) }
-        <FlexItem>
-          <Bullseye>
-            <Button
-              component='a'
-              variant='link'
-              href={ `${release}ansible/catalog/orders` }>
-              { intl.formatMessage(messages.viewMore) }&nbsp;
-            </Button>
-          </Bullseye>
-        </FlexItem>
-      </Flex>
-    );
-  };
+  const emptyOrderCard = () => (
+    <Flex direction={ { default: 'column' } }>
+      <FlexItem>
+        <Flex>
+          <FlexItem>
+            <Title headingLevel="h4">
+              { intl.formatMessage(messages.catalogCardLatestOrdersTitle) }
+            </Title>
+          </FlexItem>
+        </Flex>
+      </FlexItem>
+      { emptyOrdersList() }
+    </Flex>);
+
+  const renderCatalogOther = () => (!(orders?.meta?.count > 0) ? emptyOrderCard() :
+    <Flex direction={ { default: 'column' } }
+      justifyContent={ { default: 'justifyContentSpaceBetween' } }
+      alignSelf={ { default: 'alignSelfStretch' } }>
+      <FlexItem>
+        <Flex>
+          <FlexItem>
+            <Title headingLevel="h4">
+              { intl.formatMessage(messages.catalogCardLatestOrdersTitle) }
+            </Title>
+          </FlexItem>
+          <FlexItem>
+            <Badge isRead>{ orders?.meta?.count }</Badge>
+          </FlexItem>
+        </Flex>
+      </FlexItem>
+      { orders?.data?.map((order) => (
+        orderRow(order)
+      )) }
+      <FlexItem>
+        <Bullseye>
+          <Button
+            component='a'
+            variant='link'
+            href={ `${release}ansible/catalog/orders` }>
+            { intl.formatMessage(messages.viewMore) }&nbsp;
+          </Button>
+        </Bullseye>
+      </FlexItem>
+    </Flex>
+  );
 
   const renderCatalogCards = () => {
     if (!isCatalogAvailable) {
