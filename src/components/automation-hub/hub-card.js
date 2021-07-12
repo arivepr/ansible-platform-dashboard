@@ -200,13 +200,13 @@ const HubCard = () => {
           <FlexItem>
             <Grid hasGutter="md" >
               <GridItem span="4">
-                { content?.modules || '0' }
+                { content?.contents?.module || '0' }
               </GridItem>
               <GridItem span="4">
-                { content?.roles || 0 }
+                { content?.contents?.role || 0 }
               </GridItem>
               <GridItem span="4">
-                { content?.plugins || 0 }
+                { content?.contents?.plugin || 0 }
               </GridItem>
               <GridItem span="4">
                 <TextContent>
