@@ -75,7 +75,7 @@ const HubCard = () => {
       const day = d.getDate();
       const count = collections?.meta?.count;
       stateDispatch({ type: 'setFetching', payload: true });
-      dispatch(fetchCollection(count <= day ? count : day - 1)).then(() =>
+      dispatch(fetchCollection(count <= day ? count - 1 : day - 1)).then(() =>
         stateDispatch({ type: 'setFetching', payload: false }));
     }
   }, [ collections ]);
@@ -148,11 +148,20 @@ const HubCard = () => {
     </React.Fragment>
   );
 
+  const filterContents = (contents) => {
+    if (contents) {
+      return contents.filter(
+        item => !['doc_fragments', 'module_utils'].includes(item.content_type)
+      );
+    }
+
+    return contents;
+  };
+
   const renderHubFeaturedCollection = () => {
     const featuredCollection = collection?.data ? collection?.data[0] : null;
-
     const content = featuredCollection ? contentCounts(
-      featuredCollection.latest_version?.metadata?.contents
+      filterContents(featuredCollection?.latest_version?.metadata?.contents)
     ) : undefined;
     return (
       <Flex direction={ { default: 'column' } } alignSelf={ { default: 'alignSelfStretch' } }>
@@ -167,7 +176,7 @@ const HubCard = () => {
               <LevelItem>
                 <Logo
                   alt={ featuredCollection?.namespace?.company + ' logo' }
-                  image={ featuredCollection?.namespace.avatar_url }
+                  image={ featuredCollection?.namespace?.avatar_url }
                   size='50px'
                 />
               </LevelItem>
@@ -199,13 +208,13 @@ const HubCard = () => {
           </FlexItem>
           <FlexItem>
             <Grid hasGutter="md" >
-              <GridItem span="4">
+              <GridItem id={ 'collectionModuleCount' } span="4">
                 { content?.contents?.module || '0' }
               </GridItem>
-              <GridItem span="4">
+              <GridItem id={ 'collectionRoleCount' } span="4">
                 { content?.contents?.role || 0 }
               </GridItem>
-              <GridItem span="4">
+              <GridItem id={ 'collectionPluginCount' } span="4">
                 { content?.contents?.plugin || 0 }
               </GridItem>
               <GridItem span="4">

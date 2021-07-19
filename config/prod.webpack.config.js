@@ -4,6 +4,7 @@ const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
 .BundleAnalyzerPlugin;
 const { config: webpackConfig, plugins } = config({
   rootFolder: resolve(__dirname, '../'),
+  sassPrefix: '.ansible-dashboard, .ansibleDashboard',
   ...(process.env.BETA && { deployment: 'beta/apps' })
 });
 

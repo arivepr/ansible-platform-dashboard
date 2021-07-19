@@ -163,7 +163,7 @@ const CatalogCard = () => {
                 className="pf-u-pl-0 pf-u-pt-0"
                 component='a'
                 variant='link'
-                href={ `${release}ansible/catalog/products?portfolio=${featuredProduct?.portfolio_id}` +
+                href={ `${release}ansible/catalog/portfolio/portfolio-item?portfolio=${featuredProduct?.portfolio_id}` +
                 `&portfolio-item=${featuredProduct.id}&source=${featuredProduct.service_offering_source_ref}` }>
                 { featuredProduct?.name }
               </Button>
