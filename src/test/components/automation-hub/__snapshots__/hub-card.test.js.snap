@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AnalyticsCard /> should render correctly 1`] = `
+exports[`<HubCard /> should render correctly 1`] = `
 <IntlProvider
   defaultFormats={Object {}}
   defaultLocale="en"
@@ -45,4 +45,49 @@ exports[`<AnalyticsCard /> should render correctly 1`] = `
 </IntlProvider>
 `;
 
-exports[`<AnalyticsCard /> should render correctly in loading state 1`] = `null`;
+exports[`<HubCard /> should render correctly in loading state 1`] = `
+<IntlProvider
+  defaultFormats={Object {}}
+  defaultLocale="en"
+  formats={Object {}}
+  locale="en"
+  messages={Object {}}
+  onError={[Function]}
+  textComponent={Symbol(react.fragment)}
+>
+  <Provider
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <MemoryRouter
+      initialEntries={
+        Array [
+          "/ansible-dashboard",
+        ]
+      }
+    >
+      <IntlProvider
+        defaultFormats={Object {}}
+        defaultLocale="en"
+        formats={Object {}}
+        locale="en"
+        messages={Object {}}
+        onError={[Function]}
+        textComponent={Symbol(react.fragment)}
+      >
+        <HubCard
+          isLoading={true}
+        />
+      </IntlProvider>
+    </MemoryRouter>
+  </Provider>
+</IntlProvider>
+`;

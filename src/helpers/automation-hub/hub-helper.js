@@ -6,7 +6,7 @@ const axiosInstance = getAxiosInstance();
 
 export const getCollections = () =>
   axiosInstance.get(
-    `${AUTOMATION_HUB_API_BASE}/collections?deprecated=false&&limit=30`
+    `${AUTOMATION_HUB_API_BASE}/collections?deprecated=false&&limit=31`
   );
 
 export const getCollection = (offset) => {

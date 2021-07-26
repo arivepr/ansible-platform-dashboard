@@ -6,6 +6,7 @@ const { config: webpackConfig, plugins } = config({
   https: true,
   hot: false,
   useFileHash: false,
+  sassPrefix: '.ansible-dashboard, .ansibleDashboard',
   ...(process.env.BETA && { deployment: 'beta/apps' })
 });
 
