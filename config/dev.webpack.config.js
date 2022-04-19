@@ -7,6 +7,7 @@ const { config: webpackConfig, plugins } = config({
   sassPrefix: '.ansible-dashboard, .ansibleDashboard',
   deployment: process.env.BETA ? 'beta/apps' : 'apps',
   useProxy: true,
+  localChrome: '/Users/hq/SoftwareDev/arivepr/insights-chrome/build/',
   appUrl: process.env.BETA ? '/beta/ansible/ansible-dashboard' : '/ansible/ansible-dashboard',
   env: process.env.BETA ? 'stage-beta' : 'stage-stable',
 });
