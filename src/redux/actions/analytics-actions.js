@@ -45,6 +45,7 @@ export const fetchWarningNotifications = () => (dispatch) => {
 
 export const fetchErrorNotifications = () => (dispatch) => {
   const load = AnalyticsHelper.getNotifications('error').catch((err) => {
+    console.log('Testing error in fetchErrorNotifications: ', err);
     if (err.status === 404) {
       setAnalyticsAvailability(dispatch, false);
     }

@@ -35,6 +35,7 @@ grapqlInstance.interceptors.request.use(async (config) => {
  */
 grapqlInstance.interceptors.response.use(({ data }) => {
   if (data.errors) {
+    console.log('There was an error in userLogin: ', data);
     throw {
       message: data.errors[0].errorType,
       data: data.errors[0].message
